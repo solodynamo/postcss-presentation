@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>PostCss: By @solodynamo</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<style media="screen">
+			.reveal h2.js-text-shadow {
+				text-shadow: 1px 1px 15px rgba(0,0,0,0.7);
+			}
+
+			.reveal section img {
+				background: transparent;
+				border: none;
+				box-shadow: none;
+			}
+
+			.reveal a,
+			.js-highlight {
+				color: #E10079;
+			}
+
+			.reveal a:hover {
+				color: #ffaf86;
+			}
+
+			.reveal .progress span {
+				background-color: #E10079;
+			}
+
+			.reveal .controls .navigate-up,
+			.reveal .controls .navigate-up.enabled {
+				border-bottom-color: #E10079;
+			}
+
+			.reveal .controls .navigate-right,
+			.reveal .controls .navigate-right.enabled {
+				border-left-color: #E10079;
+			}
+
+			.reveal .controls .navigate-down,
+			.reveal .controls .navigate-down.enabled {
+				border-top-color: #E10079;
+			}
+
+			.reveal .controls .navigate-left,
+			.reveal .controls .navigate-left.enabled {
+				border-right-color: #E10079;
+			}
+
+			.reveal li {
+				list-style-type: none;
+			}
+
+			.reveal li::before {
+				content: '▪';
+				display: inline-block;
+				color: #E10079;
+				margin-right: 15px;
+			}
+		</style>
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h4>PostCss: <span class="js-highlight">by @solodynamo</span></h4>
+				</section>
+				<section>
+					<h3>PostCss = CSS parser + AST tree + Plugins + Plugins ...+ ..+ Plugins + Stringifier</h3>
+					<ol>
+						<li class="fragment fade-up">Quite <span class="js-highlight">Heavy</span> Words!! Lets go step by step</li>
+					</ol>
+				</section>
+				<section>
+					<h3>CSS parser & AST tree</h3>
+						<img src="media/1.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up">This results into...</li>
+						</ol>
+				</section>
+				<section>
+						<img src="media/2.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up">An Abstract Syntax Tree</li>
+						</ol>
+				</section>
+				<section>
+						<img src="media/3.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up"><span class="js-highlight">Plugins</span> can now manipulate the nodes.</li>
+							<li class="fragment fade-up">At last <span class="js-highlight">Stringifier</span> converts back to css.</li>
+						</ol>
+				</section>
+				<section>
+					<h2>Why i need <span class="js-highlight">postcss?</span></h2>
+					<ol>
+						<li class="fragment fade-up">Normal <span class="js-highlight">CSS</span> or only <span class="js-highlight">SASS</span> wont work?</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Advantages</h2>
+				</section>
+				<section>
+					<h3>1. Solve Global CSS Problem</h3>
+						<img src="media/4.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up">In Sass, we give our classes definite scope by nesting them! </li>
+						</ol>
+				</section>
+				<section>
+					<h3>Even Sass has tradeoffs !</h3>
+					<img src="media/5.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up"> Specificity is a bad thing and forces the innocent devs to use..</li>
+							<li class="fragment fade-up">!important</li>
+							<li class="fragment fade-up">ID's rather than Classes</li>
+						</ol>
+				</section>
+				<section>
+					<h3>2. Use Future CSS, Today</h3>
+						<img src="media/6.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up">Courtesy of cssnext plugin for postcss. </li>
+						</ol>
+				</section>
+				<section>
+					<h3>3. Avoid errors in your CSS</h3>
+						<img src="media/7.png" class="stretch"/>
+						<ol>
+							<li class="fragment fade-up">Courtesy of css stylelint plugin for postcss. </li>
+						</ol>
+				</section>
+				<section>
+					<h3>Conclusion from 'n' slides</h3>
+				</section>
+				<section>
+					<h3>With <span class="js-highlight">PostCss</span> its all about my usecase i.e.</h3>
+					<ol>
+						<li class="fragment fade-up">Will be including features i require in my project through plugins thus following a modular approach.</li>
+						<li class="fragment fade-up">Not like <span class="js-highlight">SASS</span> in which for just using mixins i would have to get all its features like @extend etc.</li>
+					</ol>
+				</section>
+				<section>
+					<h1><span class="js-highlight">Some Rockstar Plugins</span></h1>
+				</section>
+				<section>
+					<h3><span class="js-highlight">css-loader</span></h3>
+					<ol>
+						<li class="fragment fade-up">Uses<span class="js-highlight">css-modules</span>internally.</li>
+						<li class="fragment fade-up">Will see next what problem it solves.</li>
+					</ol>
+				</section>
+				<section>
+					<h3><span class="js-highlight">Problem !</span></h3>
+					<img src="media/8.png" class="stretch"/>
+					<ol>
+						<li class="fragment fade-up">it's hard to tell if they are will be red or blue (it's hard to predict order of styles created by style-loader)</li>
+					</ol>
+				</section>
+				<section>
+					<h3><span class="js-highlight">Solution !</span></h3>
+					<img src="media/9.png" class="stretch"/>
+					<ol>
+						<li class="fragment fade-up">Replaces every local-scoped identifier with a global unique name.</li>
+					</ol>
+				</section>
+				<section>
+					<h3><span class="js-highlight">extract-text-webpack-plugin</span></h3>
+					<ol>
+						<img src="media/10.png"/>
+						<li class="fragment fade-up">Your styles are no longer inlined into the JS bundle.</li>
+						<li class="fragment fade-up">Caveats : Additonal HTTP requests.</li>
+					</ol>
+				</section>
+				<section>
+					<h3><span class="js-highlight">postcss-cssnext</span></h3>
+					<ol>
+						<li class="fragment fade-up">PostCSS-cssnext is a PostCSS plugin that helps you to use the latest CSS syntax today.</li>
+						<li class="fragment fade-up"> So you don’t need to wait for browser support.</li>
+						<li class="fragment fade-up"> Some features....</li>
+					</ol>
+				</section>
+				<section>
+					<h3><span class="js-highlight">postcss-cssnext:Features</span></h3>
+					<img src="media/12.png"/>
+					<img src="media/11.png"/>
+				</section>
+				<section>
+					<h10><span class="js-highlight">Features : cont.....</span></h10>
+					<img src="media/13.png"/>
+				</section>
+				<section>
+					<h7><span class="js-highlight">Features : cont.....</span></h7>
+					<img src="media/14.png"/>
+				</section>
+				<section>
+					<h7><span class="js-highlight">Features : cont.....</span></h7>
+					<img src="media/15.png"/>
+				</section>
+				<section>
+					<h3><span class="js-highlight">Questions</span></h3>
+				</section>
+				<section>
+					<h3>Sayonara</h3>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
